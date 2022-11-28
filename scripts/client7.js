@@ -1,7 +1,3 @@
-// Art 109 Three.js Demo Site
-// client7.js
-// A three.js scene which uses planes and texture loading to generate a scene with images which can be traversed with basic WASD and mouse controls, this scene is full screen with an overlay.
-
 // Import required source code
 // Import three.js core
 import * as THREE from "../build/three.module.js";
@@ -13,11 +9,6 @@ import {
 import {
   GLTFLoader
 } from "../src/GLTFLoader.js";
-
-import { 
-  OrbitControls
-} from "../src/OrbitControls.js";
-
 
 // Establish variables
 let camera, scene, renderer, controls, material, sphere;
@@ -212,18 +203,19 @@ function init() {
   mesh3.rotation.set(0, 0, 0);
   mesh3.scale.set(15, 20, 15);
 
-  // Load first image as texture----------------------
-  const texture = new THREE.TextureLoader().load( '../../assets/glitch_map.jpg' );
-  // Immediately use the texture for material creation
-  const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
-  // Create plane geometry
-  const geometry = new THREE.PlaneGeometry( 16, 9 );
-  // Apply image texture to plane geometry
-  const plane = new THREE.Mesh( geometry, material );
-  // Position plane geometry
-  plane.position.set(0 , 10 , -15);
-  // Place plane geometry
-  scene.add( plane );
+  // // Load first image as texture----------------------
+  // const texture = new THREE.TextureLoader().load( '../../assets/giant-yellow-head-img.jpg' );
+  // // Immediately use the texture for material creation
+  // const material = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
+  // // Create plane geometry
+  // const geometry = new THREE.PlaneGeometry( 35, 22 );
+  // // Apply image texture to plane geometry
+  // const plane = new THREE.Mesh( geometry, material );
+  // // Position plane geometry
+  // plane.position.set(-5 , 12 , -70);
+  // plane.rotation.set(0, 0, 0);
+  // // Place plane geometry
+  // scene.add( plane );
 
   //adding the room to the scene-----------------------------------
   var mesh;
@@ -264,7 +256,7 @@ function init() {
         });
         // set position and scale
         mesh2 = gltf.scene;
-        mesh2.position.set(13, 6, -200);
+        mesh2.position.set(13, 5.7, -200);
         mesh2.rotation.set(0, 0, 0);
         mesh2.scale.set(40, 40, 40);
         // Add model to scene
@@ -276,21 +268,6 @@ function init() {
         console.error(error);
     }
 );
-  
-//adding a sphere to the scene-----------------------------------
-  const sphere = new THREE.Mesh (
-    new THREE.SphereGeometry (25, 0, 50),
-    new THREE.MeshStandardMaterial ({
-       roughness: 0,
-       metalness: 0.5,
-       color: 0xFFEA00
-    })
-  );
-
-  scene.add(sphere);
-  sphere.position.set(0, 50, -250);
-  sphere.position.y = 1;
-  sphere.rotation.set(0, 0, 5);
 
   // Load the figure to the scene---------------------------------
   const texture2 = new THREE.TextureLoader().load( '../../assets/giant-yellow-head-man.png' );
@@ -305,6 +282,21 @@ function init() {
   plane2.rotation.set(-.2, 0, 0);
   // Place plane geometryd
   scene.add( plane2 );
+
+
+  // Load the towel to the scene---------------------------------
+  const texture3 = new THREE.TextureLoader().load( '../../assets/giant-yellow-head-towel.png' );
+  // immediately use the texture for material creation
+  const material3 = new THREE.MeshBasicMaterial( { map: texture3, transparent: true, side: THREE.DoubleSide } );
+  // Create plane geometry
+  const geometry3 = new THREE.PlaneGeometry( 12, 17 );
+  // Apply image texture to plane geometry
+  const plane3 = new THREE.Mesh( geometry3, material3 );
+  // Position plane geometry
+  plane3.position.set(44 , 11.5 , -207);
+  plane3.rotation.set(-.08, -.25, 0);
+  // Place plane geometryd
+  scene.add( plane3 );
 
 
   // Define Rendered and html document placement
